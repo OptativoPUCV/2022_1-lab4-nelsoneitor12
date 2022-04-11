@@ -119,3 +119,20 @@ test.c:442:17: error: passing argument 1 to restrict-qualified parameter aliases
 cc1.exe: all warnings being treated as errors
 Compilation failed
 ce7cb03
+Mon Apr 11 04:35:24 HSP 2022: 
+test.c:8:8: error: '_strdup' redeclared without dllimport attribute: previous dllimport ignored [-Werror=attributes]
+    8 | char * _strdup(const char * str) {
+      |        ^~~~~~~
+test.c: In function 'enlarge_test':
+test.c:438:47: error: passing argument 1 to restrict-qualified parameter aliases with argument 3 [-Werror=restrict]
+  438 |             if(map->buckets[i]==NULL) sprintf(msg,"%.100s(null)  ",msg);
+      |                                               ^~~                  ~~~
+test.c:439:26: error: passing argument 1 to restrict-qualified parameter aliases with argument 3 [-Werror=restrict]
+  439 |             else sprintf(msg,"%.100s%s  ", msg, (char*)map->buckets[i]->value);
+      |                          ^~~               ~~~
+test.c:442:17: error: passing argument 1 to restrict-qualified parameter aliases with argument 3 [-Werror=restrict]
+  442 |         sprintf(msg,"%.100s\nbut should be: \nvalue3  (null)  (null)  (null)  value4  (null)  value2  value1  value0  (null)  (null)  (null)  value5  (null)  (null)  (null)  (null)  (null)  (null)  (null)",msg);
+      |                 ^~~                                                                                                                                                                                           ~~~
+cc1.exe: all warnings being treated as errors
+Compilation failed
+9c2e308
