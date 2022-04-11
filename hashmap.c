@@ -59,7 +59,7 @@ HashMap * createMap(long capacity) {
         printf("No hay Memoria suficiente");
         return NULL;
     }
-    map->buckets=(Pair*) createPair(key,value);
+    map->buckets=(Pair**) createPair(key,value);
     map->capacity=capacity;
     map->size=0;
     map->current=-1;
