@@ -52,10 +52,19 @@ void enlarge(HashMap * map) {
 
 
 HashMap * createMap(long capacity) {
-    HashMap *map=(HashMap *) malloc(capacity* sizeof(HashMap));
-    map->buckets=(Pair*) createPair(char *key=NULL, void *value)
+    HashMap *map=(HashMap *) malloc(sizeof(HashMap));
+    char *key=NULL;
+    void *value=NULL;
+    if (map==NULL){
+        printf("No hay Memoria suficiente");
+        return NULL;
+    }
+    map->buckets=(Pair*) createPair(key,value);
+    map->capacity=capacity;
+    map->size=0;
+    map->current=-1;
     
-    return NULL;
+    return map;
 }
 
 void eraseMap(HashMap * map,  char * key) {    

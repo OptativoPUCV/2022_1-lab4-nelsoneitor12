@@ -41,3 +41,28 @@ hashmap.c:59:1: error: control reaches end of non-void function [-Werror=return-
 cc1.exe: all warnings being treated as errors
 Compilation failed
 5c1f461
+Sun Apr 10 20:01:51 HSP 2022: 
+ hashmap.c | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function 'createMap':
+hashmap.c:62:17: error: assignment to 'Pair **' {aka 'struct Pair **'} from incompatible pointer type 'Pair *' {aka 'struct Pair *'} [-Werror=incompatible-pointer-types]
+   62 |     map->buckets=(Pair*) createPair(key,value);
+      |                 ^
+test.c: At top level:
+test.c:8:8: error: '_strdup' redeclared without dllimport attribute: previous dllimport ignored [-Werror=attributes]
+    8 | char * _strdup(const char * str) {
+      |        ^~~~~~~
+test.c: In function 'enlarge_test':
+test.c:438:47: error: passing argument 1 to restrict-qualified parameter aliases with argument 3 [-Werror=restrict]
+  438 |             if(map->buckets[i]==NULL) sprintf(msg,"%.100s(null)  ",msg);
+      |                                               ^~~                  ~~~
+test.c:439:26: error: passing argument 1 to restrict-qualified parameter aliases with argument 3 [-Werror=restrict]
+  439 |             else sprintf(msg,"%.100s%s  ", msg, (char*)map->buckets[i]->value);
+      |                          ^~~               ~~~
+test.c:442:17: error: passing argument 1 to restrict-qualified parameter aliases with argument 3 [-Werror=restrict]
+  442 |         sprintf(msg,"%.100s\nbut should be: \nvalue3  (null)  (null)  (null)  value4  (null)  value2  value1  value0  (null)  (null)  (null)  value5  (null)  (null)  (null)  (null)  (null)  (null)  (null)",msg);
+      |                 ^~~                                                                                                                                                                                           ~~~
+cc1.exe: all warnings being treated as errors
+Compilation failed
+effbf9a
